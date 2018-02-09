@@ -1,0 +1,16 @@
+37116ca1102d4ef83e57039910f229ce *DESCRIPTION
+2424de31f576dc09bb7cfa684d82b0cc *NAMESPACE
+b8c735e26330788a08832ea10437a2f9 *R/ncs.R
+b30598c7b231722a69387b84b6bd90de *R/predict.R
+1fbf538b6c87154cdeda9a9c276181b8 *R/sic_c.R
+26483545afb3873f035ba55264b371da *R/sic_l.R
+304e093fdb2d26612197192541cbd510 *R/srp.R
+d5955aa287177004f81e367bd160238a *R/srp_c.R
+344d2240fce35158b2979e7d8ddeacdb *R/srp_l.R
+da3e997a1309879aa24bcaaf455e4b3a *man/ncs.Rd
+447cba716da3b0d0695157f8c04791f7 *man/predict.srp.c.Rd
+57c3c609bd83f12bac9a2e36b68c43a3 *man/sic.c.Rd
+9e5b445b6ceb45d7eaecf60dfb7980fb *man/sic.l.Rd
+8892f6845df624c21c5453d28204e92c *man/srp.Rd
+1846fff35ffbce9255fc07b9c511cbd1 *man/srp.c.Rd
+7bf24179c3d5bd730db74b403b54c4c5 *man/srp.l.Rd
