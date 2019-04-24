@@ -2,10 +2,10 @@
 % Please edit documentation in R/sic_l.R
 \name{sic.l}
 \alias{sic.l}
-\title{The smoothness change-point detection of regression coefficients in (simpler) Smooth-Rough Partition linear regression model}
+\title{Optimisation of the (simpler) Smooth-Rough Partition model}
 \usage{
-sic.l(x.basis = x.basis, M.basis = M.basis, x = x, y = y, cf0 = cf0,
-  maxq = maxq, fixedq = F)
+sic.l(x.basis = x.basis, M.basis = M.basis, x = x, y = y,
+  cf0 = cf0, maxq = maxq, fixedq = F)
 }
 \arguments{
 \item{x.basis}{The b-spline basis defined for interpolated x in \code{\link{srp.l}}.}
@@ -18,25 +18,25 @@ sic.l(x.basis = x.basis, M.basis = M.basis, x = x, y = y, cf0 = cf0,
 
 \item{cf0}{The coefficient matrix obtained by natural cubic spline interpolation of x in \code{\link{ncs}}.}
 
-\item{maxq}{The maximum value of possible number of unconstrained parameters if \code{fixedq} is FALSE. Otherwise, it is considered as an unique number of unconstrained parameters.}
+\item{maxq}{The maximum number of unconstrained parameters if \code{fixedq} is FALSE. Otherwise, it is considered as a unique number of unconstrained parameters.}
 
 \item{fixedq}{If TRUE, \code{maxq} is considered as a fixed number of unconstrained parameters and if FALSE, \code{maxq} is a maximum and a sequence of possible values are investigated to select the optimal.}
 }
 \value{
 The following components are obtained only when \code{fixedq} is FALSE:
 \item{qhat}{The optimal number of unconstrained parameters.}
-\item{sicq}{The vector of Schwarz criterion with length \code{maxq} which is computed for different number of unconstrained parameters.} The following components are obtained only when \code{fixedq} is TRUE:
+\item{sicq}{The vector of Schwarz criterion with length \code{maxq} which is computed for the different number of unconstrained parameters.} The following components are obtained only when \code{fixedq} is TRUE:
 \item{muhat}{The estimator of constant parameter.}
 \item{bhat}{The vector of evaluated constrained functional regression coefficient.}
-\item{ahat}{The vector of unconstrained regression coefficcient estimators.}
+\item{ahat}{The vector of unconstrained regression coefficient estimators.}
 \item{etahat}{The vector containing both \code{bhat} and \code{ahat} with unevaluated form.}
 \item{yhat}{The vector of estimated response variable.}
 }
 \description{
-This function performs the optimisation of the number of unconstrained regression parameters in (simpler) Smooth-Rough Partition model and gives the change-point in regression parameters.
+This function performs the optimisation of the number of unconstrained regression parameters in (simpler) Smooth-Rough Partition model by minimising SIC criterion and gives the change-point in regression parameters.
 }
 \details{
-The Smooth-Rough Partition model is described in "Regularised forecasting via smooth-rough partitioning of the regression coefficients", H. Maeng and P. Fryzlewicz (2018), preprint.
+Usually only called by \code{\link{srp.l}}.
 }
 \examples{
 library(fda)

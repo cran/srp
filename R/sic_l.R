@@ -1,22 +1,22 @@
-#' The smoothness change-point detection of regression coefficients in (simpler) Smooth-Rough Partition linear regression model
+#' Optimisation of the (simpler) Smooth-Rough Partition model
 #'
-#' This function performs the optimisation of the number of unconstrained regression parameters in (simpler) Smooth-Rough Partition model and gives the change-point in regression parameters.
+#' This function performs the optimisation of the number of unconstrained regression parameters in (simpler) Smooth-Rough Partition model by minimising SIC criterion and gives the change-point in regression parameters.
 #'
-#' The Smooth-Rough Partition model is described in "Regularised forecasting via smooth-rough partitioning of the regression coefficients", H. Maeng and P. Fryzlewicz (2018), preprint.
+#' Usually only called by \code{\link{srp.l}}.
 #'
 #' @param x.basis The b-spline basis defined for interpolated x in \code{\link{srp.l}}.
 #' @param M.basis The monomial basis defined for constrained regression coefficient.
 #' @param x The design matrix used in \code{\link{srp.l}}.
 #' @param y The response variable used in \code{\link{srp.l}}.
 #' @param cf0 The coefficient matrix obtained by natural cubic spline interpolation of x in \code{\link{ncs}}.
-#' @param maxq The maximum value of possible number of unconstrained parameters if \code{fixedq} is FALSE. Otherwise, it is considered as an unique number of unconstrained parameters.
+#' @param maxq The maximum number of unconstrained parameters if \code{fixedq} is FALSE. Otherwise, it is considered as a unique number of unconstrained parameters.
 #' @param fixedq If TRUE, \code{maxq} is considered as a fixed number of unconstrained parameters and if FALSE, \code{maxq} is a maximum and a sequence of possible values are investigated to select the optimal.
 #' @return The following components are obtained only when \code{fixedq} is FALSE:
 #' \item{qhat}{The optimal number of unconstrained parameters.}
-#' \item{sicq}{The vector of Schwarz criterion with length \code{maxq} which is computed for different number of unconstrained parameters.} The following components are obtained only when \code{fixedq} is TRUE:
+#' \item{sicq}{The vector of Schwarz criterion with length \code{maxq} which is computed for the different number of unconstrained parameters.} The following components are obtained only when \code{fixedq} is TRUE:
 #' \item{muhat}{The estimator of constant parameter.}
 #' \item{bhat}{The vector of evaluated constrained functional regression coefficient.}
-#' \item{ahat}{The vector of unconstrained regression coefficcient estimators.}
+#' \item{ahat}{The vector of unconstrained regression coefficient estimators.}
 #' \item{etahat}{The vector containing both \code{bhat} and \code{ahat} with unevaluated form.}
 #' \item{yhat}{The vector of estimated response variable.}
 #' @author Hyeyoung Maeng, \email{h.maeng@@lse.ac.uk}
@@ -59,7 +59,7 @@ sic.l <- function(x.basis=x.basis, M.basis=M.basis, x=x, y=y, cf0=cf0, maxq=maxq
       muhat <- mean(y) - ahatv - bhatx
 
       ### SIC criterion
-      sicq[i] = log(mean((y - (W1%*%etahat + muhat))^2))*n + log(n)*(Vsize+2+1)
+      sicq[i] = log(mean((y - (W1%*%etahat + muhat))^2))*n + log(n)*(Vsize + 2 + 1)
     }
 
     qhat <- which.min(sicq)

@@ -4,26 +4,26 @@
 #'
 #' The estimation procedure of Smooth-Rough Partition model is described in "Regularised forecasting via smooth-rough partitioning of the regression coefficients", H. Maeng and P. Fryzlewicz (2018), preprint.
 #'
-#' @param x A matrix you wish to fit Smooth-Rough Partition model. The dimension of row is the number of variables.
-#' @param y A vector you wish to use as a response variable in case of regressing \code{y} on \code{x}. If \code{y} is missing, the response variable is obtained in design matrix \code{x}.
-#' @param maxq An integer specifying the maximum value of number of unconstrained parameters which the model can have. The default is 10.
+#' @param x A matrix you wish to fit Smooth-Rough Partition model. The dimension of row is the number of variables which are pre-ordered in terms of their importance in prediction.
+#' @param y A vector you wish to use as a response variable in case of regressing \code{y} on \code{x}. If \code{y} is missing, the response variable is obtained from the last row of \code{x}.
+#' @param maxq An integer specifying the maximum number of unconstrained parameters which the model can have. The default is max(30, ceiling(0.1*dim(x)[1])).
 #' @param plot If true, it gives the plot of estimated regression coefficients.
 #' @return
 #' \item{muhat}{The estimator of constant parameter.}
 #' \item{bhat}{The vector of evaluated constrained (linear) functional regression coefficient.}
-#' \item{ahat}{The vector of unconstrained regression coefficcient estimators.}
+#' \item{ahat}{The vector of unconstrained regression coefficient estimators.}
 #' \item{etahat}{The vector containing both \code{bhat} and \code{ahat} with unevaluated form.}
 #' \item{yhat}{The vector of estimated response variable.}
-#' \item{SIC}{The vector of Schwarz criterion with length \code{maxq} which is computed for different number of unconstrained parameters.}
+#' \item{SIC}{The vector of Schwarz criterion with length \code{maxq} which is computed for the different number of unconstrained parameters.}
 #' \item{qhat}{The optimal number of unconstrained parameters selected in the model.}
 #' @author Hyeyoung Maeng, \email{h.maeng@@lse.ac.uk}
-#' @seealso \code{\link{srp.c}}
+#' @seealso \code{\link{srp.c}}, \code{\link{predict.srp.l}}, \code{\link{sic.l}}
 #' @examples
 #' x <- matrix(rnorm(10000), ncol=100)
 #' srp.l(x)
 #' @export
 
-srp.l <- function(x, y, maxq=10, plot=T){
+srp.l <- function(x, y, maxq=max(30, ceiling(0.1*dim(x)[1])), plot=T){
 
   ##### 1. Check the input
   if(!is.matrix(x))
@@ -65,6 +65,8 @@ srp.l <- function(x, y, maxq=10, plot=T){
   }
 
   results <- list("muhat" = fit$muhat, "bhat" = fit$bhat, "ahat" = fit$ahat, "etahat" = fit$etahat, "yhat" = fit$yhat, "SIC" = sicq, "qhat" = qhat)
+
+  class(results) <- "srp.l"
   return(results)
 
 

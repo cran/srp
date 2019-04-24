@@ -2,32 +2,35 @@
 % Please edit documentation in R/srp_c.R
 \name{srp.c}
 \alias{srp.c}
-\title{The Smooth-Rough Partition linear regression model fitting}
+\title{The Smooth-Rough Partition model fitting}
 \usage{
-srp.c(x, y, maxq = 10, L = 35, norder = 4, plot = T)
+srp.c(x, y, maxq = max(30, ceiling(0.1 * dim(x)[1])), L = 35,
+  norder = 4, inisp = 1, plot = T)
 }
 \arguments{
-\item{x}{A matrix you wish to fit Smooth-Rough Partition model. The dimension of row is the number of variables.}
+\item{x}{A matrix you wish to fit Smooth-Rough Partition model. The dimension of row is the number of variables which are pre-ordered in terms of their importance in prediction.}
 
-\item{y}{A vector you wish to use as a response variable in case of regressing \code{y} on \code{x}. If \code{y} is missing, the response variable is obtained in design matrix \code{x}.}
+\item{y}{A vector you wish to use as a response variable in case of regressing \code{y} on \code{x}. If \code{y} is missing, the response variable is obtained from the last row of \code{x}.}
 
-\item{maxq}{An integer specifying the maximum value of number of unconstrained parameters which the model can have. The default is 10.}
+\item{maxq}{An integer specifying the maximum number of unconstrained parameters which the model can have. The default is max(30, ceiling(0.1*dim(x)[1])).}
 
-\item{L}{An integer specifying the dimension of b-spline expansion for constrained parameters. The default is 35.}
+\item{L}{An integer specifying the dimension of b-spline expansion for the constrained (smoothed) parameters. The default is 35.}
 
 \item{norder}{An integer specifying the order of b-splines. The default of 4 performs cubic splines.}
+
+\item{inisp}{An initial value for optimising the tuning parameters and the default is 1.}
 
 \item{plot}{If true, it gives the plot of estimated regression coefficients.}
 }
 \value{
 \item{muhat}{The estimator of constant parameter.}
 \item{bhat}{The vector of evaluated constrained functional regression coefficient.}
-\item{ahat}{The vector of unconstrained regression coefficcient estimators.}
+\item{ahat}{The vector of unconstrained regression coefficient estimators.}
 \item{etahat}{The vector containing both \code{bhat} and \code{ahat} with unevaluated form.}
 \item{yhat}{The vector of estimated response variable.}
-\item{SIC}{The vector of Schwarz criterion with length \code{maxq} which is computed for different number of unconstrained parameters.}
+\item{SIC}{The vector of Schwarz criterion with length \code{maxq} which is computed for the different number of unconstrained parameters.}
 \item{qhat}{The optimal number of unconstrained parameters selected in the model.}
-\item{sp}{The vector of two penalty parameters estimated by minimising generalised cross validation (GCV).}
+\item{sp}{The vector of two tuning parameters estimated by minimising generalised cross validation (GCV).}
 \item{L}{The number of bases used for constrained regression parameters.}
 \item{norder}{The order of b-splines specified.}
 }

@@ -2,12 +2,12 @@
 % Please edit documentation in R/ncs.R
 \name{ncs}
 \alias{ncs}
-\title{The natural cubic spline interpolation of a matrix}
+\title{The natural cubic spline interpolation}
 \usage{
 ncs(x)
 }
 \arguments{
-\item{x}{The design matrix used in \code{\link{srp.c}}.}
+\item{x}{The design matrix.}
 }
 \value{
 \item{cf0}{The coefficient matrix for B-splines obtained by natural cubic spline interpolation of \code{x}.}
@@ -15,12 +15,15 @@ ncs(x)
 \description{
 This function performs the natural cubic spline interpolation of a design matrix.
 }
+\details{
+Usually only called by \code{\link{srp.c}} and \code{\link{srp.l}}.
+}
 \examples{
 x <- matrix(rnorm(100), ncol=10)
 ncs(x)$cf0
 }
 \seealso{
-\code{\link{sic.c}}, \code{\link{sic.l}}
+\code{\link{srp.c}}, \code{\link{srp.l}}
 }
 \author{
 Hyeyoung Maeng, \email{h.maeng@lse.ac.uk}

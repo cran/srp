@@ -1,6 +1,6 @@
 #' A dataset containing true regression coefficients for simulation
 #'
-#' True regression coefficients used for simulation in "Regularised forecasting via smooth-rough partitioning of the regression coefficients", H. Maeng and P. Fryzlewicz (2018), preprint.
+#' True regression coefficients used for simulations in "Regularised forecasting via smooth-rough partitioning of the regression coefficients", H. Maeng and P. Fryzlewicz (2018), preprint.
 #'
 #'
 #' @docType data

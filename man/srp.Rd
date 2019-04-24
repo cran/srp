@@ -4,9 +4,9 @@
 \name{srp}
 \alias{srp}
 \alias{srp-package}
-\title{srp: The smoothness change-point detection of regression coefficients in linear model}
+\title{srp: Detecting the change-point of smoothness in linear regression coefficients}
 \description{
-The srp package performs the change-point detection in regression coefficients of linear model by partitioning the regression coefficients into two classes of smoothness. To start with, see the function \code{srp.c}.
+The srp package performs the change-point detection in regression coefficients of a linear model by partitioning the regression coefficients into two classes of smoothness. To start with, see the function \code{srp.c}.
 }
 \references{
 "Regularised forecasting via smooth-rough partitioning of the regression coefficients", H. Maeng and P. Fryzlewicz (2018), preprint.

@@ -1,13 +1,14 @@
-#' The natural cubic spline interpolation of a matrix
+#' The natural cubic spline interpolation
 #'
 #' This function performs the natural cubic spline interpolation of a design matrix.
 #'
+#' Usually only called by \code{\link{srp.c}} and \code{\link{srp.l}}.
 #'
-#' @param x The design matrix used in \code{\link{srp.c}}.
+#' @param x The design matrix.
 #' @return
 #' \item{cf0}{The coefficient matrix for B-splines obtained by natural cubic spline interpolation of \code{x}.}
 #' @author Hyeyoung Maeng, \email{h.maeng@@lse.ac.uk}
-#' @seealso \code{\link{sic.c}}, \code{\link{sic.l}}
+#' @seealso \code{\link{srp.c}}, \code{\link{srp.l}}
 #' @examples
 #' x <- matrix(rnorm(100), ncol=10)
 #' ncs(x)$cf0
